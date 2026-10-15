@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Customs: Resolved Board (real screenshots)</title>
+<style>
+  :root { --bg: #0b0b0f; --panel: #15151c; --line: #2e2e3b; --text: #f4f1f6; --muted: #b9b3c2; --pink: #ff4fa3; --pink-soft: #ff8cc6; --ok: #6ee7b7; --warn: #fbbf24; --stop: #fb7185; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; }
+  header { padding: 28px 32px 18px; border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #17101a 0%, var(--bg) 100%); }
+  header h1 { margin: 0; font-size: 26px; } header h1 span { color: var(--pink); }
+  header p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 8px 24px 60px; }
+  h2 { margin: 36px 0 6px; font-size: 22px; } h2 .tag { font-size: 13px; vertical-align: middle; margin-left: 8px; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; }
+  .wait { background: rgba(251,191,36,.15); color: var(--warn); } .open { background: rgba(147,197,253,.15); color: #93c5fd; }
+  p { margin: 8px 0; } .muted { color: var(--muted); } code { color: var(--pink-soft); font-family: Consolas, monospace; font-size: .9em; }
+  figure { margin: 14px 0 26px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  figure img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+  figcaption { padding: 12px 16px; font-size: 14px; color: var(--muted); } figcaption strong { color: var(--text); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card .k { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); } .card .v { font-size: 20px; font-weight: 800; }
+  .todo { border-left: 4px solid var(--warn); background: rgba(251,191,36,.07); border-radius: 0 12px 12px 0; padding: 12px 16px; margin: 12px 0; }
+  .todo li { margin: 4px 0; }
+  .bad { color: var(--stop); font-weight: 700; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 30px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Campus Customs <span>Resolved Board</span></h1>
+  <p>Real screenshots of the React dashboard (<code>http://localhost:5173</code>) taken during the Problem 9 runs on 2026-10-15. The backend was <code>backend/main.py</code>, the database <code>data/campus_customs_new.db</code>, and the model real <code>gpt-6-luna</code> via Portkey. Nothing on this page is mocked or edited.</p>
+</header>
+<main>
+  <div class="grid">
+    <div class="card"><div class="k">Starting balance</div><div class="v">$3,400.00</div></div>
+    <div class="card"><div class="k">Paid by human approval</div><div class="v">−$3,240.00</div></div>
+    <div class="card"><div class="k">Ending balance</div><div class="v">$160.00</div></div>
+    <div class="card"><div class="k">Resolved</div><div class="v">101 · 102 · 103</div></div>
+    <div class="card"><div class="k">Waiting on a human</div><div class="v">none</div></div>
+  </div>
+
+  <div class="todo">
+    <strong>Still open after the tickets (not approvals):</strong>
+    <ul>
+      <li>Drafts #1 and #2 stay on the board for review and are never emailed. Draft #2 was corrected by Beck Jamilov and no longer mentions costs or the vendor invoice.</li>
+      <li>Ticket 103: only the 8 in-stock hoodies are offered at 10% ($417.60). The remaining 12 are <strong>not promised</strong>, and nothing has been delivered, sold, or paid.</li>
+      <li>October rent: $2,400 is due 2026-10-02, and checking holds $160. That's why the dashboard shows <strong>−$2,240 after all open bills</strong>, a forecast rather than a negative balance.</li>
+    </ul>
+  </div>
+
+  <h2>Ticket 103 after the human decision <span class="tag" style="background:rgba(110,231,183,.15);color:#6ee7b7">resolved</span></h2>
+  <p class="muted">Beck Jamilov approved 10% off for the 8 size M hoodies in stock, and not the other 12. The decision was recorded with <code>record_ticket_decision</code> (audit event 199), and draft #2 was revised with the human-only <code>revise_customer_message_draft</code> tool (audit event 198). Both were taken afterwards from the real dashboard.</p>
+  <figure>
+    <img src="screenshots/103_resolved.jpg" alt="Ticket 103 resolved with Beck Jamilov's decision; all three tickets resolved; checking $160">
+    <figcaption><strong>All three tickets resolved.</strong> 103's final decision by Beck Jamilov: 10% off for 8 ($52.20 each, $417.60), the 12 not promised, and nothing delivered, sold, or paid. Cash is unchanged at $160.00 with no approvals waiting.</figcaption>
+  </figure>
+  <figure>
+    <img src="screenshots/103_draft_fixed.jpg" alt="Corrected draft #2 on the board, revised by Beck Jamilov">
+    <figcaption><strong>Corrected draft #2 on the board</strong>, “Customer Service (revised by Beck Jamilov)”. It offers 8 at $52.20, says the 12 aren't promised yet, and mentions other sizes in stock. It has no cost or invoice details and was not sent. (The right edge of the page is cut off in this capture.)</figcaption>
+  </figure>
+
+  <h2>After human approval <span class="tag" style="background:rgba(110,231,183,.15);color:#6ee7b7">current state</span></h2>
+  <p class="muted">Beck Jamilov approved and executed request #1 ($840, invoice 501) at 02:25:42 UTC and request #2 ($2,400, rent) at 02:25:45 UTC from the dashboard (audit events 194–197). Screenshots were taken afterwards, without a reset or any re-run.</p>
+  <figure>
+    <img src="screenshots/101_after_approval.jpg" alt="Ticket 101 resolved by Beck Jamilov, invoice 501 paid, checking $160">
+    <figcaption><strong>Ticket 101: resolved.</strong> Final decision by Beck Jamilov. The invoice line now reads “(paid)”. Cash: $160.00 checking, $0 promised, $160 available, and −$2,240 after all open bills (October rent forecast). No approvals waiting.</figcaption>
+  </figure>
+  <figure>
+    <img src="screenshots/102_after_approval.jpg" alt="Ticket 102 resolved, lease now due 2026-10-02">
+    <figcaption><strong>Ticket 102: resolved.</strong> Final decision by Beck Jamilov. The lease line now shows the next due date <strong>2026-10-02</strong>, because the September rent was paid. That is the $2,400 behind the −$2,240 forecast.</figcaption>
+  </figure>
+  <figure>
+    <img src="screenshots/103_after_approval.jpg" alt="Ticket 103 still waiting for human approval">
+    <figcaption><strong>Ticket 103 right after the payment approvals (before the pricing decision): still waiting for a human.</strong> Boss's decision was unchanged. This ticket needs a pricing decision, not a payment, so the approvals didn't resolve it.</figcaption>
+  </figure>
+
+  <h2 style="margin-top:44px">During the agent runs (before approval)</h2>
+
+  <h2>Before the runs <span class="tag open">all open</span></h2>
+  <figure>
+    <img src="screenshots/00_start.jpg" alt="Dashboard after reset: three open tickets, checking balance $3,400, no approvals">
+    <figcaption><strong>After <code>POST /api/reset</code>.</strong> Three open tickets, $3,400.00 checking, $0 promised, and no approvals waiting.</figcaption>
+  </figure>
+
+  <h2>Ticket 101: Bulldog tee <span class="tag wait">waiting for human approval</span></h2>
+  <figure>
+    <img src="screenshots/101_summary.jpg" alt="Ticket 101 summary with Boss's decision, reasons, agent reports, and pending $840 approval">
+    <figcaption><strong>Summary after the real run.</strong> Boss's decision, the reasons, and what Inventory, Accounting, and Customer Service each did. Request #1 ($840) is in Approvals. Available cash dropped to $2,560 while the balance stayed $3,400.</figcaption>
+  </figure>
+  <figure>
+    <img src="screenshots/101_activity.jpg" alt="Activity feed for ticket 101 showing the failed first attempt and the successful second run">
+    <figcaption><strong>Activity feed, oldest first.</strong> Shows draft #1 and the <span class="bad">failed first attempt</span> (a Portkey 400 error on reasoning_effort), followed by the successful re-run after the fix.</figcaption>
+  </figure>
+
+  <h2>Ticket 102: Rent due <span class="tag wait">waiting for human approval</span></h2>
+  <figure>
+    <img src="screenshots/102_summary.jpg" alt="Ticket 102 summary: rent notice matches the lease, request #2 for $2,400 pending">
+    <figcaption><strong>Summary after the real run.</strong> Facilities matched the notice to lease 1 and Accounting created request #2 ($2,400). Cash shows $3,240 promised and $160 available. Facilities' report says “leaving $1,000”, which <span class="bad">ignores the pending $840</span>. Boss and Accounting used the correct $160.</figcaption>
+  </figure>
+
+  <h2>Ticket 103: Bulk hoodie discount <span class="tag wait">waiting for human approval</span></h2>
+  <figure>
+    <img src="screenshots/103_summary.jpg" alt="Ticket 103 summary: 8 of 20 in stock, restock blocked, 10% discount recommended">
+    <figcaption><strong>Summary after the real run.</strong> 8 of 20 in stock and 12 short. The restock is blocked by invoice 501, and $264 is more than the $160 available, so no purchase request was made. Boss recommends a conditional 10% discount ($52.20). Still 2 approvals waiting, both from tickets 101 and 102.</figcaption>
+  </figure>
+  <figure>
+    <img src="screenshots/103_activity.jpg" alt="Activity feed for ticket 103 showing draft #2 and Boss delegating to Inventory and Accounting">
+    <figcaption><strong>Activity feed.</strong> Draft #2 is at the top. Boss delegated to Inventory and Accounting in the same second (parallel). <span class="bad">Draft #2 mentions the unpaid vendor invoice and the $22 unit cost</span>, which the Customer Service rules forbid. It was not sent.</figcaption>
+  </figure>
+
+  <footer>Screenshots: <code>output/screenshots/</code> · Details: <code>output/desk_tickets.html</code> (Actual and Cash tabs), <code>output/resolved_tickets.json</code>, <code>output/audit_trail.json</code></footer>
+</main>
+</body>
+</html>

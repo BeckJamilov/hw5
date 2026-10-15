@@ -1,0 +1,764 @@
+{
+  "generated_from": [
+    "output/audit_trail.json",
+    "data/campus_customs_new.db"
+  ],
+  "model": "gpt-6-luna via Portkey (real runs, not simulated)",
+  "business_date": "2026-08-31",
+  "cash": {
+    "account": "checking",
+    "starting_balance": 3400.0,
+    "ending_balance": 160.0,
+    "change": -3240.0,
+    "payments_recorded": [
+      {
+        "id": 1,
+        "kind": "invoice",
+        "ref_id": 501,
+        "amount": 840.0,
+        "account": "checking",
+        "paid_at": "2026-10-15T02:25:42+00:00",
+        "approved_by": "Beck Jamilov"
+      },
+      {
+        "id": 2,
+        "kind": "rent",
+        "ref_id": 1,
+        "amount": 2400.0,
+        "account": "checking",
+        "paid_at": "2026-10-15T02:25:45+00:00",
+        "approved_by": "Beck Jamilov"
+      }
+    ],
+    "promised_to_pending_requests": 0,
+    "available_now": 160.0,
+    "calculation": "3400.00 - 840.00 (payment 1, invoice 501) - 2400.00 (payment 2, rent lease 1) = 160.00",
+    "dashboard_after_all_open_bills": -2240.0,
+    "why_after_all_open_bills_is_negative": "Forecast, not a balance: checking 160.00 minus open invoices 0.00 minus next month's rent 2400.00 (lease 1 next_due moved to 2026-10-02 after the rent payment) = -2240.00. The real balance is 160.00 and cannot go below 0."
+  },
+  "summary": {
+    "resolved": [
+      101,
+      102,
+      103
+    ],
+    "waiting_for_human": [],
+    "pending_approval_request_ids": [],
+    "human_approvals_made": [
+      {
+        "time": "2026-10-15T02:25:42+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "request_id": 1,
+        "ticket_id": 101,
+        "action": "approve",
+        "status": "ok",
+        "result": {
+          "approval_request": {
+            "id": 1,
+            "kind": "invoice_payment",
+            "ticket_id": 101,
+            "ref_id": 501,
+            "sku": null,
+            "size": null,
+            "qty": null,
+            "unit_cost": null,
+            "amount": 840.0,
+            "period_due": null,
+            "reason": "Invoice 501 is $840 and 3 days overdue (due 2026-08-28); requesting payment while preserving $160 after the $2,400 rent due 2026-09-02.",
+            "requested_by": "Accounting",
+            "status": "approved",
+            "created_at": "2026-10-15T02:16:13+00:00",
+            "decided_by": "Beck Jamilov",
+            "decided_at": "2026-10-15T02:25:42+00:00",
+            "decision_note": "",
+            "executed_by": null,
+            "executed_at": null,
+            "payment_id": null
+          }
+        }
+      },
+      {
+        "time": "2026-10-15T02:25:42+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "request_id": 1,
+        "ticket_id": 101,
+        "action": "execute",
+        "status": "ok",
+        "result": {
+          "payment": {
+            "id": 1,
+            "kind": "invoice",
+            "ref_id": 501,
+            "amount": 840.0,
+            "account": "checking",
+            "paid_at": "2026-10-15T02:25:42+00:00",
+            "approved_by": "Beck Jamilov"
+          },
+          "cash_account": {
+            "name": "checking",
+            "balance": 2560.0,
+            "date": "2026-08-31"
+          }
+        }
+      },
+      {
+        "time": "2026-10-15T02:25:45+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "request_id": 2,
+        "ticket_id": 102,
+        "action": "approve",
+        "status": "ok",
+        "result": {
+          "approval_request": {
+            "id": 2,
+            "kind": "rent_payment",
+            "ticket_id": 102,
+            "ref_id": 1,
+            "sku": null,
+            "size": null,
+            "qty": null,
+            "unit_cost": null,
+            "amount": 2400.0,
+            "period_due": "2026-09-02",
+            "reason": "Lease 1 rent of $2,400 is due 2026-09-02 and notice matches Elm City Properties. Shared available cash is $2,560 after the pending $840 invoice request; this request leaves $160.",
+            "requested_by": "Accounting",
+            "status": "approved",
+            "created_at": "2026-10-15T02:17:26+00:00",
+            "decided_by": "Beck Jamilov",
+            "decided_at": "2026-10-15T02:25:45+00:00",
+            "decision_note": "",
+            "executed_by": null,
+            "executed_at": null,
+            "payment_id": null
+          }
+        }
+      },
+      {
+        "time": "2026-10-15T02:25:45+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "request_id": 2,
+        "ticket_id": 102,
+        "action": "execute",
+        "status": "ok",
+        "result": {
+          "payment": {
+            "id": 2,
+            "kind": "rent",
+            "ref_id": 1,
+            "amount": 2400.0,
+            "account": "checking",
+            "paid_at": "2026-10-15T02:25:45+00:00",
+            "approved_by": "Beck Jamilov"
+          },
+          "cash_account": {
+            "name": "checking",
+            "balance": 160.0,
+            "date": "2026-08-31"
+          }
+        }
+      },
+      {
+        "time": "2026-10-15T02:32:59+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "ticket_id": 103,
+        "action": "revise_draft",
+        "draft_id": 2,
+        "status": "ok",
+        "reason": "Removed internal unit cost, margin and vendor invoice details; offer matches the human decision.",
+        "result": {
+          "before": {
+            "id": 2,
+            "ticket_id": 103,
+            "recipient": "Yale AI Club",
+            "subject": "Bulk hoodie availability and proposed discount",
+            "body": "Hello Yale AI Club,\n\nWe currently have 8 of the 20 requested size M hoodies in stock, leaving 12 unavailable. Restocking is currently blocked while a vendor invoice remains unpaid; after it is cleared, restocking would take 5 days. We’ll confirm a date once restocking is approved and the vendor can ship.\n\nFor the eventual 20-hoodie order, we can propose a 10% bulk discount, bringing the price to $52.20 each instead of $58. This is proposed, pending manager approval, and contingent on inventory/restocking being available. At that price, it is $30.20 above the $22 unit cost.\n\nCampus Customs",
+            "prepared_by": "Customer Service",
+            "status": "draft_not_sent",
+            "created_at": "2026-10-15T02:18:29+00:00"
+          },
+          "after": {
+            "id": 2,
+            "ticket_id": 103,
+            "recipient": "Yale AI Club",
+            "subject": "Your bulk hoodie request: 8 available now at 10% off",
+            "body": "Hello Yale AI Club,\n\nThank you for your bulk order request. We can offer the 8 size M Basic Hoodie Big Yale hoodies we currently have in stock at a 10% bulk discount: $52.20 each instead of $58.00, or $417.60 for all 8.\n\nWe can't promise the remaining 12 size M hoodies yet. We'll contact you as soon as we can confirm when more will be available. If other sizes work for some of your members, we also have S, L and XL in stock.\n\nPlease let us know if you'd like to go ahead with the 8 hoodies.\n\nCampus Customs",
+            "prepared_by": "Customer Service (revised by Beck Jamilov)",
+            "status": "draft_not_sent",
+            "created_at": "2026-10-15T02:18:29+00:00"
+          },
+          "note": "Still a draft on the board. It has NOT been sent."
+        }
+      },
+      {
+        "time": "2026-10-15T02:32:59+00:00",
+        "event": "human_action",
+        "agent": null,
+        "human": "Beck Jamilov",
+        "ticket_id": 103,
+        "action": "decide_discount",
+        "status": "ok",
+        "decision": {
+          "discount_pct": 10,
+          "qty_approved": 8,
+          "unit_price": 52.2,
+          "total_if_accepted": 417.6,
+          "remaining_12": "not promised"
+        },
+        "result": {
+          "decision": {
+            "id": 6,
+            "ticket_id": 103,
+            "decision": "resolved",
+            "summary": "Human decision by Beck Jamilov: approved a 10% bulk discount for the 8 size M hoodies in stock only ($52.20 each instead of $58.00; $417.60 for 8 if the club accepts). The remaining 12 are not promised until there is enough cash for a restock and Bulldog Print Co can ship; no purchase request was created. Nothing has been delivered, sold, or paid for this ticket. Draft #2 was corrected and stays on the board, not sent.",
+            "decided_by": "Beck Jamilov",
+            "created_at": "2026-10-15T02:32:59+00:00"
+          },
+          "ticket": {
+            "id": 103,
+            "type": "price_override",
+            "requester": "Yale AI Club",
+            "subject": "Bulk hoodie discount",
+            "sku": "CC-HOOD-NAVY",
+            "size": "M",
+            "qty": 20,
+            "lease_id": null,
+            "invoice_id": null,
+            "status": "resolved",
+            "notes": "Student org wants 20 hoodies, size M, asking for a bulk discount.",
+            "created_at": "2026-08-31T16:55:00-04:00"
+          }
+        }
+      }
+    ],
+    "approved_by_agents": 0
+  },
+  "tickets": [
+    {
+      "ticket_id": 101,
+      "type": "customer_order",
+      "requester": "Tauhid Zaman",
+      "subject": "Bulldog tee",
+      "status": "resolved",
+      "resolved": true,
+      "outcome": "All approval requests for ticket 101 were handled by Beck Jamilov; every approved payment/purchase was executed.",
+      "decided_by": "Beck Jamilov",
+      "agent_decision": {
+        "decision": "waiting_for_human_approval",
+        "summary": "Size S is out of stock. Invoice 501 ($840, three days overdue) blocks Bulldog Print Co from shipping. Payment request #1 is pending human approval; if approved, vendor lead time is five days and earliest estimated arrival is 2026-09-05. Customer draft #1 is saved for review, not sent."
+      },
+      "attempts": [
+        {
+          "run_id": "143e5847ac3f",
+          "status": "error: ModelHTTPError",
+          "started": "2026-10-15T02:14:33+00:00",
+          "ended": "2026-10-15T02:14:36+00:00",
+          "audit_event_range": [
+            1,
+            4
+          ],
+          "errors": [
+            "ModelHTTPError: status_code: 400, model_name: gpt-6-luna, body: {'message': \"azure-openai error: Function tools with reasoning_effort are not supported for gpt-6-luna-global in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\", 'type': 'invalid_request_error', 'param': 'reasoning_effort', 'code': None}"
+          ]
+        },
+        {
+          "run_id": "0540089ffa76",
+          "status": "ok",
+          "started": "2026-10-15T02:15:52+00:00",
+          "ended": "2026-10-15T02:16:31+00:00",
+          "audit_event_range": [
+            5,
+            68
+          ],
+          "errors": []
+        }
+      ],
+      "final_run": {
+        "run_id": "0540089ffa76",
+        "agents_involved": [
+          "Boss",
+          "Inventory",
+          "Accounting",
+          "Customer Service"
+        ],
+        "delegations_in_order": [
+          {
+            "from": "Boss",
+            "to": "Inventory",
+            "status": "started"
+          },
+          {
+            "from": "Boss",
+            "to": "Accounting",
+            "status": "started"
+          },
+          {
+            "from": "Boss",
+            "to": "Customer Service",
+            "status": "started"
+          }
+        ],
+        "team_usage": {
+          "requests": 16,
+          "tool_calls": 19,
+          "input_tokens": 39989,
+          "output_tokens": 1971
+        },
+        "delegations_used": 3,
+        "tool_errors": []
+      },
+      "agent_contributions": [
+        {
+          "agent": "Inventory",
+          "mcp_tools_called": [
+            "check_customer_order",
+            "list_vendors"
+          ],
+          "delegations_made": [],
+          "summary": "There is no CC-TEE-WHITE size S stock to fill the order. Bulldog Print Co is an apparel restock vendor with a five-day lead time, but its open invoice 501 blocks new shipments; earliest arrival if shipment becomes available after resolution is 2026-09-05.",
+          "approval_request_ids": [],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Accounting",
+          "mcp_tools_called": [
+            "get_cash_position",
+            "list_open_invoices",
+            "list_approval_requests",
+            "get_ticket_details",
+            "request_invoice_payment"
+          ],
+          "delegations_made": [],
+          "summary": "Invoice 501 is open, unpaid, and 3 days overdue. I prepared request #1 for its recorded $840 amount; it is waiting for human approval and execution, not paid. Given the upcoming $2,400 rent due 2026-09-02, paying this invoice alongside rent would leave $160.",
+          "approval_request_ids": [
+            1
+          ],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Customer Service",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_customer_order",
+            "list_message_drafts",
+            "save_customer_message_draft"
+          ],
+          "delegations_made": [],
+          "summary": "Size S is out of stock, and the linked vendor shipment is awaiting approval; no fulfillment or delivery date is promised. Draft #1 was saved on the board, not sent.",
+          "approval_request_ids": [],
+          "message_draft_ids": [
+            1
+          ]
+        },
+        {
+          "agent": "Boss",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "get_cash_position",
+            "list_approval_requests",
+            "list_message_drafts",
+            "record_ticket_decision"
+          ],
+          "delegations_made": [
+            "Boss -> Inventory",
+            "Boss -> Accounting",
+            "Boss -> Customer Service"
+          ],
+          "summary": "Size S is out of stock, and invoice 501 blocks the vendor from shipping. The $840 invoice payment request is awaiting human approval. Customer reply draft is saved for review only; no message was sent.",
+          "approval_request_ids": [
+            1
+          ],
+          "message_draft_ids": [
+            1
+          ]
+        }
+      ],
+      "human_approvals": [
+        {
+          "request_id": 1,
+          "kind": "invoice_payment",
+          "amount": 840.0,
+          "ref_id": 501,
+          "period_due": null,
+          "requested_by": "Accounting",
+          "status": "executed",
+          "decided_by": "Beck Jamilov",
+          "executed_by": "Beck Jamilov",
+          "reason": "Invoice 501 is $840 and 3 days overdue (due 2026-08-28); requesting payment while preserving $160 after the $2,400 rent due 2026-09-02."
+        }
+      ],
+      "boss_suggested_human_steps": [
+        "Decide whether to approve invoice payment request #1, considering rent due September 2 and the $160 remaining after both bills.",
+        "Review customer message draft #1; it will not be sent automatically."
+      ],
+      "human_actions": [
+        {
+          "time": "2026-10-15T02:25:42+00:00",
+          "human": "Beck Jamilov",
+          "action": "approve",
+          "request_id": 1,
+          "draft_id": null,
+          "status": "ok",
+          "decision": null
+        },
+        {
+          "time": "2026-10-15T02:25:42+00:00",
+          "human": "Beck Jamilov",
+          "action": "execute",
+          "request_id": 1,
+          "draft_id": null,
+          "status": "ok",
+          "decision": null
+        }
+      ],
+      "still_needs_human": [
+        "Review draft #1 on the board (never emailed). Size S arrives only if Bulldog Print Co actually ships the reprint."
+      ],
+      "customer_drafts": [
+        {
+          "draft_id": 1,
+          "recipient": "Tauhid Zaman",
+          "subject": "Update on your Bulldog tee order",
+          "status": "draft_not_sent",
+          "body": "Hi Tauhid,\n\nSize S of the Classic Bulldog Tee is currently out of stock, so we can’t fill your order from available inventory. We’re waiting on an approval related to the vendor shipment. If that is approved and the vendor can ship, the earliest arrival could be September 5; that date is not guaranteed. We’ll confirm a date when we know more. Sizes M, L, and XL are currently in stock if you’d like to consider another size.\n\nCampus Customs"
+        }
+      ],
+      "reviewer_notes": [
+        "Inventory did not delegate to Accounting as planned; Boss delegated to each specialist directly."
+      ]
+    },
+    {
+      "ticket_id": 102,
+      "type": "rent_notice",
+      "requester": "Elm City Properties",
+      "subject": "Rent due",
+      "status": "resolved",
+      "resolved": true,
+      "outcome": "All approval requests for ticket 102 were handled by Beck Jamilov; every approved payment/purchase was executed.",
+      "decided_by": "Beck Jamilov",
+      "agent_decision": {
+        "decision": "waiting_for_human_approval",
+        "summary": "Rent notice matches the lease: Elm City Properties, $2,400 due 2026-09-02. Accounting prepared rent payment request #2 for human approval. It has not been paid; after the $840 pending invoice request and this rent request, $160 of cash remains available."
+      },
+      "attempts": [
+        {
+          "run_id": "d372dcbd362e",
+          "status": "ok",
+          "started": "2026-10-15T02:17:06+00:00",
+          "ended": "2026-10-15T02:17:33+00:00",
+          "audit_event_range": [
+            69,
+            123
+          ],
+          "errors": []
+        }
+      ],
+      "final_run": {
+        "run_id": "d372dcbd362e",
+        "agents_involved": [
+          "Boss",
+          "Facilities",
+          "Accounting"
+        ],
+        "delegations_in_order": [
+          {
+            "from": "Boss",
+            "to": "Facilities",
+            "status": "started"
+          },
+          {
+            "from": "Boss",
+            "to": "Accounting",
+            "status": "started"
+          }
+        ],
+        "team_usage": {
+          "requests": 13,
+          "tool_calls": 17,
+          "input_tokens": 33441,
+          "output_tokens": 1459
+        },
+        "delegations_used": 2,
+        "tool_errors": []
+      },
+      "agent_contributions": [
+        {
+          "agent": "Facilities",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_rent_notice",
+            "list_approval_requests",
+            "get_lease",
+            "list_approval_requests"
+          ],
+          "delegations_made": [],
+          "summary": "The rent notice matches the lease: requester/landlord is Elm City Properties, lease rent is $2,400, and the notice says rent is due in 2 days, matching September 2, 2026. No rent payment or approval request is recorded for this ticket/due date; rent fits available cash, leaving $1,000. No payment was made; since the notice is valid and unrequested, Accounting should prepare a payment request for the lease amount, subject to human approval.",
+          "approval_request_ids": [],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Accounting",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_rent_notice",
+            "get_cash_position",
+            "list_approval_requests",
+            "request_rent_payment"
+          ],
+          "delegations_made": [],
+          "summary": "The rent notice matches lease 1 for Elm City Properties: $2,400 due 2026-09-02. Prepared request #2 for exactly the lease amount; it is waiting for human approval and nothing has been paid.",
+          "approval_request_ids": [
+            2
+          ],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Boss",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_rent_notice",
+            "get_cash_position",
+            "list_approval_requests",
+            "record_ticket_decision"
+          ],
+          "delegations_made": [
+            "Boss -> Facilities",
+            "Boss -> Accounting"
+          ],
+          "summary": "The $2,400 rent notice matches the lease for Elm City Properties and is due September 2, 2026. Accounting created payment request #2 for human approval; no payment has been made. Given the other pending $840 invoice request, approving both would leave $160 cash.",
+          "approval_request_ids": [
+            2
+          ],
+          "message_draft_ids": []
+        }
+      ],
+      "human_approvals": [
+        {
+          "request_id": 2,
+          "kind": "rent_payment",
+          "amount": 2400.0,
+          "ref_id": 1,
+          "period_due": "2026-09-02",
+          "requested_by": "Accounting",
+          "status": "executed",
+          "decided_by": "Beck Jamilov",
+          "executed_by": "Beck Jamilov",
+          "reason": "Lease 1 rent of $2,400 is due 2026-09-02 and notice matches Elm City Properties. Shared available cash is $2,560 after the pending $840 invoice request; this request leaves $160."
+        }
+      ],
+      "boss_suggested_human_steps": [
+        "Review and approve or decline rent payment request #2. The existing $840 invoice request is also pending; approving both would leave $160 cash."
+      ],
+      "human_actions": [
+        {
+          "time": "2026-10-15T02:25:45+00:00",
+          "human": "Beck Jamilov",
+          "action": "approve",
+          "request_id": 2,
+          "draft_id": null,
+          "status": "ok",
+          "decision": null
+        },
+        {
+          "time": "2026-10-15T02:25:45+00:00",
+          "human": "Beck Jamilov",
+          "action": "execute",
+          "request_id": 2,
+          "draft_id": null,
+          "status": "ok",
+          "decision": null
+        }
+      ],
+      "still_needs_human": [],
+      "customer_drafts": [],
+      "reviewer_notes": [
+        "Facilities reported rent 'leaves $1,000' (total cash minus rent), ignoring the $840 already promised to request #1; Accounting and Boss correctly said $160 remains.",
+        "Facilities did not delegate to Accounting as planned; Boss did."
+      ]
+    },
+    {
+      "ticket_id": 103,
+      "type": "price_override",
+      "requester": "Yale AI Club",
+      "subject": "Bulk hoodie discount",
+      "status": "resolved",
+      "resolved": true,
+      "outcome": "Human decision by Beck Jamilov: approved a 10% bulk discount for the 8 size M hoodies in stock only ($52.20 each instead of $58.00; $417.60 for 8 if the club accepts). The remaining 12 are not promised until there is enough cash for a restock and Bulldog Print Co can ship; no purchase request was created. Nothing has been delivered, sold, or paid for this ticket. Draft #2 was corrected and stays on the board, not sent.",
+      "decided_by": "Beck Jamilov",
+      "agent_decision": {
+        "decision": "waiting_for_human_approval",
+        "summary": "8 of 20 size M hoodies are in stock; 12 are short. Restock is blocked by overdue invoice 501 and would take 5 days after clearance; only $160 shared available cash remains, below the $264 cost to restock 12. Recommend a 10% discount ($52.20 each; $30.20 above unit cost), contingent on availability and manager approval. Customer message draft #2 is saved for review and not sent."
+      },
+      "attempts": [
+        {
+          "run_id": "c85c16b1debc",
+          "status": "ok",
+          "started": "2026-10-15T02:17:57+00:00",
+          "ended": "2026-10-15T02:18:37+00:00",
+          "audit_event_range": [
+            124,
+            193
+          ],
+          "errors": []
+        }
+      ],
+      "final_run": {
+        "run_id": "c85c16b1debc",
+        "agents_involved": [
+          "Boss",
+          "Inventory",
+          "Accounting",
+          "Customer Service"
+        ],
+        "delegations_in_order": [
+          {
+            "from": "Boss",
+            "to": "Inventory",
+            "status": "started"
+          },
+          {
+            "from": "Boss",
+            "to": "Accounting",
+            "status": "started"
+          },
+          {
+            "from": "Boss",
+            "to": "Customer Service",
+            "status": "started"
+          }
+        ],
+        "team_usage": {
+          "requests": 14,
+          "tool_calls": 23,
+          "input_tokens": 40345,
+          "output_tokens": 2442
+        },
+        "delegations_used": 3,
+        "tool_errors": []
+      },
+      "agent_contributions": [
+        {
+          "agent": "Inventory",
+          "mcp_tools_called": [
+            "check_bulk_hoodie_order",
+            "get_inventory",
+            "list_vendors",
+            "list_open_invoices"
+          ],
+          "delegations_made": [],
+          "summary": "There are 8 of the 20 requested size M hoodies on hand, leaving a shortfall of 12. One apparel restock vendor is listed; it cannot ship while its overdue open invoice remains unpaid, and after the block is resolved its listed lead time is 5 days (earliest arrival 2026-09-05, based on today 2026-08-31). Restocking requires an Accounting purchase request and human approval; no order has been placed.",
+          "approval_request_ids": [],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Accounting",
+          "mcp_tools_called": [
+            "check_bulk_hoodie_order",
+            "get_cash_position",
+            "list_approval_requests",
+            "get_ticket_details",
+            "check_discount"
+          ],
+          "delegations_made": [],
+          "summary": "The 20-hoodie order has a 12-unit shortfall; restocking is not appropriate now because the only apparel option has an unpaid overdue invoice and shared available cash is only $160, while restocking 12 at $22 each would cost $264. A modest illustrative 10% discount gives a $52.20 unit price and $30.20 margin per hoodie ($604 order profit); the maximum discount before loss is 62.1%, but the shop should stay well below that. No purchase approval request was created.",
+          "approval_request_ids": [],
+          "message_draft_ids": []
+        },
+        {
+          "agent": "Customer Service",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_bulk_hoodie_order",
+            "list_message_drafts",
+            "check_discount",
+            "save_customer_message_draft"
+          ],
+          "delegations_made": [],
+          "summary": "Saved a customer message draft for Yale AI Club explaining current size M availability, the restock constraint and timing, and the conditional proposed 10% discount. Draft is on the board for human review and was not sent.",
+          "approval_request_ids": [],
+          "message_draft_ids": [
+            2
+          ]
+        },
+        {
+          "agent": "Boss",
+          "mcp_tools_called": [
+            "get_ticket_details",
+            "check_bulk_hoodie_order",
+            "get_cash_position",
+            "list_approval_requests",
+            "list_message_drafts",
+            "record_ticket_decision"
+          ],
+          "delegations_made": [
+            "Boss -> Inventory",
+            "Boss -> Accounting",
+            "Boss -> Customer Service"
+          ],
+          "summary": "Only 8 of 20 requested size M hoodies are in stock, leaving a 12-unit shortfall. Restocking is blocked by an overdue vendor invoice, and available shared cash is insufficient for the $264 restock cost. Recommend a conditional 10% discount; customer draft #2 is saved for review and was not sent.",
+          "approval_request_ids": [],
+          "message_draft_ids": [
+            2
+          ]
+        }
+      ],
+      "human_approvals": [],
+      "boss_suggested_human_steps": [
+        "Review the proposed 10% discount and draft #2; decide whether to approve the customer offer, subject to inventory/restock availability.",
+        "Resolve the overdue vendor invoice through the existing approval process before any new shipment can occur."
+      ],
+      "human_actions": [
+        {
+          "time": "2026-10-15T02:32:59+00:00",
+          "human": "Beck Jamilov",
+          "action": "revise_draft",
+          "request_id": null,
+          "draft_id": 2,
+          "status": "ok",
+          "decision": null
+        },
+        {
+          "time": "2026-10-15T02:32:59+00:00",
+          "human": "Beck Jamilov",
+          "action": "decide_discount",
+          "request_id": null,
+          "draft_id": null,
+          "status": "ok",
+          "decision": {
+            "discount_pct": 10,
+            "qty_approved": 8,
+            "unit_price": 52.2,
+            "total_if_accepted": 417.6,
+            "remaining_12": "not promised"
+          }
+        }
+      ],
+      "still_needs_human": [
+        "Review draft #2 on the board (never emailed). The remaining 12 hoodies are not promised: they need enough cash for a restock and a vendor that can ship."
+      ],
+      "customer_drafts": [
+        {
+          "draft_id": 2,
+          "recipient": "Yale AI Club",
+          "subject": "Your bulk hoodie request: 8 available now at 10% off",
+          "status": "draft_not_sent",
+          "body": "Hello Yale AI Club,\n\nThank you for your bulk order request. We can offer the 8 size M Basic Hoodie Big Yale hoodies we currently have in stock at a 10% bulk discount: $52.20 each instead of $58.00, or $417.60 for all 8.\n\nWe can't promise the remaining 12 size M hoodies yet. We'll contact you as soon as we can confirm when more will be available. If other sizes work for some of your members, we also have S, L and XL in stock.\n\nPlease let us know if you'd like to go ahead with the 8 hoodies.\n\nCampus Customs"
+        }
+      ],
+      "reviewer_notes": [
+        "The agent's original draft #2 told the customer about an unpaid vendor invoice and the $22 unit cost / $30.20 margin, breaking the Customer Service rule. It was never sent; Beck Jamilov revised it in place (audit event 198) and it remains draft_not_sent on the board.",
+        "Boss delegated to Inventory and Accounting in parallel (same second), so Accounting did not wait for Inventory's findings.",
+        "Accounting tested one discount level (10%), not several."
+      ]
+    }
+  ]
+}

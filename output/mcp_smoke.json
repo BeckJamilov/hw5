@@ -1,0 +1,41 @@
+{
+  "description": "Problem 4 smoke test: each campus-customs tool called through the live MCP connection (.mcp.json), not simulated.",
+  "server": "campus-customs",
+  "database": "data/campus_customs_new.db",
+  "run_date": "2026-10-14",
+  "verification": {
+    "method": "Each saved output was compared field by field with direct read-only SQL queries on data/campus_customs_new.db, run separately from the server code.",
+    "checks_run": 37,
+    "mismatches": 0,
+    "result": "All three tools connected and returned values that match the working database. Calls were read-only; campus_customs_new.db is still byte-identical to the original campus_customs.db."
+  },
+  "tests": [
+    {
+      "prompt": "Now please continue Problem 4 where we stopped. Check if you can access our campus-customs MCP server and call all three tools through MCP, one by one. Save the real outputs in output/mcp_smoke.json with the prompt, tool name and returned output for each test. Check if all values match our working database.",
+      "test": "Ticket 101: customer order for a Bulldog tee, size S",
+      "tool_name": "check_customer_order",
+      "mcp_tool": "mcp__campus-customs__check_customer_order",
+      "arguments": {"ticket_id": 101},
+      "status": "success",
+      "output": {"today":"2026-08-31","ticket":{"id":101,"type":"customer_order","requester":"Tauhid Zaman","subject":"Bulldog tee","sku":"CC-TEE-WHITE","size":"S","qty":1,"lease_id":null,"invoice_id":501,"status":"open","notes":"Needs a tee in size S.","created_at":"2026-08-31T09:15:00-04:00"},"requested_item":{"sku":"CC-TEE-WHITE","name":"Classic Bulldog Tee","size":"S","qty":0,"location":"Aisle B"},"qty_requested":1,"qty_on_hand":0,"can_fill_from_stock":false,"other_sizes_same_sku":[{"size":"L","qty":3,"location":"Aisle B"},{"size":"M","qty":5,"location":"Aisle B"},{"size":"XL","qty":2,"location":"Aisle B"}],"pricing":{"sku":"CC-TEE-WHITE","unit_cost":8,"list_price":28},"linked_invoice":{"id":501,"vendor_id":1,"amount":840,"due_date":"2026-08-28","status":"open","description":"Rush reprint CC-TEE-WHITE S","days_overdue":3,"payments":[]},"vendor":{"id":1,"name":"Bulldog Print Co","specialty":"apparel reprint","lead_days":5}}
+    },
+    {
+      "prompt": "Now please continue Problem 4 where we stopped. Check if you can access our campus-customs MCP server and call all three tools through MCP, one by one. Save the real outputs in output/mcp_smoke.json with the prompt, tool name and returned output for each test. Check if all values match our working database.",
+      "test": "Ticket 102: rent notice from Elm City Properties",
+      "tool_name": "check_rent_notice",
+      "mcp_tool": "mcp__campus-customs__check_rent_notice",
+      "arguments": {"ticket_id": 102},
+      "status": "success",
+      "output": {"today":"2026-08-31","ticket":{"id":102,"type":"rent_notice","requester":"Elm City Properties","subject":"Rent due","sku":null,"size":null,"qty":null,"lease_id":1,"invoice_id":null,"status":"open","notes":"Email: shop rent due in 2 days.","created_at":"2026-08-31T11:05:00-04:00"},"lease":{"id":1,"space_name":"Chapel Street shop","landlord":"Elm City Properties","monthly_rent":2400,"next_due":"2026-09-02","notes":null},"cash_accounts":[{"name":"checking","balance":3400,"date":"2026-08-31"}],"total_cash":3400,"days_until_due":2,"landlord_matches_requester":true,"cash_after_rent":1000,"related_payments":[]}
+    },
+    {
+      "prompt": "Now please continue Problem 4 where we stopped. Check if you can access our campus-customs MCP server and call all three tools through MCP, one by one. Save the real outputs in output/mcp_smoke.json with the prompt, tool name and returned output for each test. Check if all values match our working database.",
+      "test": "Ticket 103: Yale AI Club bulk hoodie discount (20 x size M)",
+      "tool_name": "check_bulk_hoodie_order",
+      "mcp_tool": "mcp__campus-customs__check_bulk_hoodie_order",
+      "arguments": {"ticket_id": 103},
+      "status": "success",
+      "output": {"today":"2026-08-31","ticket":{"id":103,"type":"price_override","requester":"Yale AI Club","subject":"Bulk hoodie discount","sku":"CC-HOOD-NAVY","size":"M","qty":20,"lease_id":null,"invoice_id":null,"status":"open","notes":"Student org wants 20 hoodies, size M, asking for a bulk discount.","created_at":"2026-08-31T16:55:00-04:00"},"requested_item":{"sku":"CC-HOOD-NAVY","name":"Basic Hoodie Big Yale","size":"M","qty":8,"location":"Aisle A"},"qty_requested":20,"qty_on_hand":8,"shortfall":12,"all_sizes_same_sku":[{"size":"L","qty":14,"location":"Aisle A"},{"size":"M","qty":8,"location":"Aisle A"},{"size":"S","qty":4,"location":"Aisle A"},{"size":"XL","qty":6,"location":"Aisle A"}],"pricing":{"sku":"CC-HOOD-NAVY","unit_cost":22,"list_price":58},"restocking_options":[{"id":1,"name":"Bulldog Print Co","specialty":"apparel reprint","lead_days":5,"open_invoices":[{"id":501,"vendor_id":1,"amount":840,"due_date":"2026-08-28","status":"open","description":"Rush reprint CC-TEE-WHITE S","days_overdue":3}],"open_invoice_total":840,"can_ship_now":false}],"margin_per_unit_at_list":36,"order_revenue_at_list":1160,"order_cost":440,"max_discount_pct_before_loss":62.1}
+    }
+  ]
+}

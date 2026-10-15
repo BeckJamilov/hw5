@@ -1,0 +1,32 @@
+# Secrets: never commit real API keys (.env.example is kept as a template)
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node / React build
+node_modules/
+frontend/dist/
+dist/
+*.tsbuildinfo
+*.log
+
+# Temporary file written during a database reset
+data/*.db.resetting
+
+# Local editor / OS / Claude Code settings
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Kept on purpose (not ignored):
+#   data/campus_customs.db and data/campus_customs_new.db
+#   output/ (results, audit trail, screenshots)

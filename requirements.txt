@@ -1,0 +1,17 @@
+# Python dependencies for the whole project (tested with Python 3.14).
+# Install into the project's virtual environment:  pip install -r requirements.txt
+
+# MCP server (mcp_server/server.py)
+fastmcp==4.1.0
+
+# Agent team (backend/agents.py): PydanticAI + OpenAI client pointed at Portkey
+pydantic-ai-slim[openai,mcp]==2.56.0
+openai==3.31.0
+python-dotenv==1.2.4
+
+# FastAPI backend (backend/main.py)
+fastapi==0.143.1
+uvicorn[standard]==0.54.0
+
+# Used by FastAPI's TestClient for testing the API routes
+httpx==0.28.1
